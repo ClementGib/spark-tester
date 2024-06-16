@@ -11,19 +11,19 @@ import org.apache.spark.sql.SparkSession;
 public class App 
 {
     public static void main(String[] args) {
+        System.out.println("Starting Spark App");
         // Create a Spark session
         SparkSession spark = SparkSession.builder()
                 .appName("Simple Spark App")
                 .config("spark.master", "local")
                 .getOrCreate();
 
-        // Read a JSON file into a DataFrame
-//        Dataset<Row> df = spark.read().json("src/main/resources/people.json");
+        Dataset<Row> df = spark.read().json("src/main/resources/people.json");
 
-//        // Show the DataFrame
-//        df.show();
-//
-//        // Stop the Spark session
-//        spark.stop();
+        // Show the DataFrame
+        df.show();
+
+        // Stop the Spark session
+        spark.stop();
     }
 }
